@@ -1,5 +1,5 @@
 <?php
-require 'vendor/autoload.php'; // Cargar Composer
+require 'vendor/autoload.php';
 
 $alerta = "";
 
@@ -11,12 +11,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (!empty($nombre) && !empty($email) && !empty($descripcion)) {
         try {
-            // Tu misma conexión directa
             $cliente = new MongoDB\Client("mongodb+srv://prueba:FwaAuvVWQbOJiGaq@cluster0.7dy1rur.mongodb.net/?appName=Cluster0");
             $db = $cliente->prueba;
             $coleccionSoporte = $db->soporte; 
             
-            // Insertamos el reporte de soporte técnico
             $resultado = $coleccionSoporte->insertOne([
                 'contacto' => [
                     'nombre' => $nombre,
@@ -50,11 +48,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
         <div class="container">
-            <a class="navbar-brand" href="index.php">🎓 Portal Aprendices</a>
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <a class="navbar-brand" href="index.html">🎓 Portal Aprendices</a>
+            <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php">Inicio / Registro</a>
+                        <a class="nav-link" href="index.html">Formulario Registro</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="vista.php">📋 Ver Respuestas</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="soporte.php">🛠️ Soporte Técnico</a>
@@ -64,45 +65,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </nav>
 
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="card shadow-sm p-4">
-                    <h2 class="text-center mb-2 text-danger">Módulo de Soporte</h2>
-                    <p class="text-muted text-center mb-4">Reporta novedades o fallas técnicas del sitio directamente al clúster.</p>
-                    
-                    <?php echo $alerta; ?>
+    <div class="container" style="max-width: 600px;">
+        <div class="card shadow-sm p-4 mt-4">
+            <h2 class="text-center mb-2 text-danger fs-4">Módulo de Soporte Técnico</h2>
+            <p class="text-muted text-center mb-4 small">Registra novedades en caso de fallas en el sitio.</p>
+            
+            <?php echo $alerta; ?>
 
-                    <form action="soporte.php" method="POST">
-                        <div class="mb-3">
-                            <label class="form-label">Nombre Completo *</label>
-                            <input type="text" name="nombre" required class="form-control" placeholder="Ej. Carlos Mendoza">
-                        </div>
-                        
-                        <div class="mb-3">
-                            <label class="form-label">Correo Electrónico de Contacto *</label>
-                            <input type="email" name="email" required class="form-control" placeholder="carlos@correo.com">
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Tipo de Fallo</label>
-                            <select name="tipo_fallo" class="form-select">
-                                <option value="Error de Carga">Error de Conexión / Carga Lenta</option>
-                                <option value="Fallo en Formulario">Fallo al registrar datos</option>
-                                <option value="Problema Visual">Interfaz / Diseño roto</option>
-                                <option value="Otro">Otro problema técnico</option>
-                            </select>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Descripción detallada del fallo *</label>
-                            <textarea name="descripcion" required class="form-control" rows="4" placeholder="Escribe detalladamente qué error sucedió..."></textarea>
-                        </div>
-
-                        <button type="submit" class="btn btn-danger w-100">Enviar Reporte Técnico</button>
-                    </form>
+            <form action="soporte.php" method="POST">
+                <div class="mb-3">
+                    <label class="form-label">Nombre Completo *</label>
+                    <input type="text" name="nombre" required class="form-control" placeholder="Ej. Carlos Mendoza">
                 </div>
-            </div>
+                
+                <div class="mb-3">
+                    <label class="form-label">Correo Electrónico de Contacto *</label>
+                    <input type="email" name="email" required class="form-control" placeholder="carlos@correo.com">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Tipo de Fallo</label>
+                    <select name="tipo_fallo" class="form-select">
+                        <option value="Error de Carga">Error de Conexión / Carga Lenta</option>
+                        <option value="Fallo en Formulario">Fallo al registrar datos</option>
+                        <option value="Problema Visual">Interfaz / Diseño roto</option>
+                        <option value="Otro">Otro problema técnico</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Descripción detallada del fallo *</label>
+                    <textarea name="descripcion" required class="form-control" rows="4" placeholder="Escribe qué error sucedió..."></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-danger w-100">Enviar Reporte Técnico</button>
+            </form>
         </div>
     </div>
 
