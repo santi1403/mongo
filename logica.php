@@ -5,7 +5,7 @@ $hoy = date("Y-m-d H:i:s");
 
 require 'vendor/autoload.php'; // Cargar Composer
 
-    $cliente = new MongoDB\Client("mongodb+srv://prueba:oP6cQAPbFmAH2f2M@cluster0.7dy1rur.mongodb.net/?appName=Cluster0");
+    $cliente = new MongoDB\Client("mongodb+srv://prueba:FwaAuvVWQbOJiGaq@cluster0.7dy1rur.mongodb.net/?appName=Cluster0");
     $db = $cliente->prueba;	// Nombre de BD
     $coleccion = $db->gustos;	//Nombre de la coleccion	
     $resultado = $coleccion->insertOne([
