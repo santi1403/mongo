@@ -3,58 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Aprendices v2.0 - Registro de Intereses</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>Práctica 2 - Despliegue en sitio Render o Railway</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .navbar-custom { background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); }
+        .card-custom { border-radius: 15px; border: none; transition: transform 0.2s; }
+        .card-custom:hover { transform: translateY(-5px); }
+        .gradient-btn { background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); color: white; border: none; }
+        .gradient-btn:hover { background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%); color: white; }
+    </style>
 </head>
 <body class="bg-light">
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom shadow mb-5">
         <div class="container">
-            <a class="navbar-brand" href="index.html">🎓 Portal Aprendices</a>
-            <div class="collapse navbar-collapse">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="index.html">Formulario Registro</a>
+            <a class="navbar-brand fw-bold" href="index.html">
+                <i class="fa-solid fa-graduation-cap me-2 text-info"></i>PORTAL APRENDICES
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="topNavbar">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item me-2">
+                        <a class="nav-link active fw-semibold btn btn-outline-light btn-sm text-white px-3" href="index.html">
+                            <i class="fa-solid fa-pen-to-square me-1"></i> Registrar Gustos
+                        </a>
+                    </li>
+                    <li class="nav-item me-2">
+                        <a class="nav-link fw-semibold text-light px-3" href="vista.php">
+                            <i class="fa-solid fa-table-list me-1"></i> Panel de Respuestas
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="vista.php">📋 Ver Respuestas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="soporte.php">🛠️ Soporte Técnico</a>
+                        <a class="nav-link fw-semibold text-light px-3" href="soporte.php">
+                            <i class="fa-solid fa-screwdriver-wrench me-1"></i> Soporte Técnico
+                        </a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <div class="container" style="max-width: 600px;">
-        <div class="card shadow-sm p-4 mt-4">
-            <h2 class="text-center mb-4 text-primary fs-4">REGISTRO DE GUSTOS POR APRENDIZ</h2>
-            <form action="logica.php" method="post">
-                <div class="mb-3">
-                    <label class="form-label">Apellidos:</label>
-                    <input type="text" required maxlength="200" name="apellidos" class="form-control">
+    <div class="container my-4">
+        <div class="row mb-4">
+            <div class="col-12 text-center text-lg-start">
+                <h1 class="fw-extrabold text-dark">Módulo de Caracterización</h1>
+                <p class="text-muted">Formulario oficial para el registro de tendencias culturales, cinematográficas y culinarias de la comunidad.</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4 mb-4">
+                <div class="card card-custom bg-white shadow-sm p-4 mb-4">
+                    <h5 class="fw-bold text-secondary mb-3"><i class="fa-solid fa-circle-info text-primary me-2"></i>Instrucciones</h5>
+                    <p class="small text-muted">Por favor, rellene todos los campos del formulario de forma sincera. Los datos recopilados serán analizados mediante algoritmos Big Data almacenados en clústeres multirregión de <strong>MongoDB Atlas</strong> para organizar los próximos eventos de integración.</p>
+                    <hr>
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="bg-light p-3 rounded-circle text-primary me-3"><i class="fa-solid fa-shield-halved fa-lg"></i></div>
+                        <div>
+                            <h6 class="mb-0 fw-bold">Seguridad Cifrada</h6>
+                            <small class="text-muted text-truncate">Transmisión SSL/TLS activa hacia la nube.</small>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <div class="bg-light p-3 rounded-circle text-success me-3"><i class="fa-solid fa-database fa-lg"></i></div>
+                        <div>
+                            <h6 class="mb-0 fw-bold">Arquitectura NoSQL</h6>
+                            <small class="text-muted">Esquemas flexibles basados en JSON.</small>
+                        </div>
+                    </div>
                 </div>
-                <div class="mb-3">
-                    <label class="form-label">Nombres:</label>
-                    <input type="text" required maxlength="200" name="nombres" class="form-control">
+
+                <div class="card card-custom text-white bg-dark shadow-sm p-4">
+                    <h5 class="fw-bold mb-2"><i class="fa-solid fa-chart-bar me-2 text-warning"></i>¿Deseas ver estadísticas?</h5>
+                    <p class="small text-light text-opacity-75">Puedes monitorear en tiempo real los gustos cargados por otros compañeros en la plataforma remota.</p>
+                    <a href="vista.php" class="btn btn-warning btn-sm fw-bold w-100 mt-2"><i class="fa-solid fa-eye me-1"></i> Ir al Tablero Global</a>
                 </div>
-                <div class="mb-3">
-                    <label class="form-label">Color favorito:</label>
-                    <input type="text" required maxlength="200" name="color" class="form-control">
+            </div>
+
+            <div class="col-lg-8 mb-4">
+                <div class="card card-custom bg-white shadow p-4 p-md-5">
+                    <div class="text-center mb-4">
+                        <div class="bg-primary bg-opacity-10 text-primary p-3 rounded-circle d-inline-block mb-3">
+                            <i class="fa-solid fa-user-plus fa-2x"></i>
+                        </div>
+                        <h3 class="fw-bold text-dark">REGISTRO DE GUSTOS POR APRENDIZ</h3>
+                        <p class="text-muted small">Todos los campos marcados con asterisco (*) son obligatorios.</p>
+                    </div>
+
+                    <form action="logica.php" method="post" class="needs-validation">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-semibold text-secondary">Apellidos Completos *</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light text-muted"><i class="fa-solid fa-id-card"></i></span>
+                                    <input type="text" required maxlength="200" name="apellidos" class="form-control" placeholder="Ej. Gómez Restrepo">
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label fw-semibold text-secondary">Nombres Completos *</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-light text-muted"><i class="fa-solid fa-user"></i></span>
+                                    <input type="text" required maxlength="200" name="nombres" class="form-control" placeholder="Ej. Juan Andrés">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold text-secondary">Color Favorito *</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light text-muted"><i class="fa-solid fa-palette"></i></span>
+                                <input type="text" required maxlength="200" name="color" class="form-control" placeholder="Ej. Azul Turquesa / Verde Esmeralda">
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold text-secondary">Comida Favorita *</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light text-muted"><i class="fa-solid fa-utensils"></i></span>
+                                <input type="text" required maxlength="200" name="comida" class="form-control" placeholder="Ej. Bandeja Paisa, Pizza artesanal, Sushi">
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label fw-semibold text-secondary">Tipo de Literatura y Cine Preferido *</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light text-muted"><i class="fa-solid fa-film"></i></span>
+                                <input type="text" required maxlength="200" name="pelicula" class="form-control" placeholder="Ej. Ciencia Ficción, Novela Policial, Terror">
+                            </div>
+                        </div>
+
+                        <div class="pt-2">
+                            <button type="submit" class="btn gradient-btn btn-lg w-100 fw-bold shadow-sm">
+                                <i class="fa-solid fa-cloud-arrow-up me-2"></i>Registrar Mi Respuesta en Atlas
+                            </button>
+                        </div>
+                    </form>
                 </div>
-                <div class="mb-3">
-                    <label class="form-label">Comida favorita:</label>
-                    <input type="text" required maxlength="200" name="comida" class="form-control">
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Tipo de literatura y cine:</label>
-                    <input type="text" required maxlength="200" name="pelicula" class="form-control">
-                </div>
-                <button type="submit" class="btn btn-primary w-100">Registrar mi respuesta</button>
-            </form>
+            </div>
         </div>
     </div>
+
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <div class="container">
+            <p class="mb-0 small text-white-50">© 2026 Portal de Aprendices - Práctica Avanzada de Despliegue de Aplicaciones NoSQL.</p>
+        </div>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
